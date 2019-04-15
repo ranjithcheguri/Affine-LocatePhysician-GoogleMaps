@@ -1,0 +1,1 @@
+module.exports = { MY_API_KEY: "AIzaSyBamxibIuV-M2NYIV1bQI1DClCiWp0VTqs" }
