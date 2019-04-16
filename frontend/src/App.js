@@ -2,18 +2,9 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './App.css';
 import GoogleMapReact from 'google-map-react';
-
-
-
+import ENV from './config/config.js';
 
 class App extends Component {
-  // static defaultProps = {
-  //   center: {
-  //     lat: 42.3590805,
-  //     lng: -87.9004545
-  //   },
-  //   zoom: 11
-  // };
   constructor(props) {
     super(props);
     this.state = {
@@ -38,7 +29,7 @@ class App extends Component {
       latitude: 0,
       longitude: 0
     })
-    axios.get('http://localhost:3001/getLocation', {
+    axios.get(ENV.BACKEND_IP+'/getLocation', {
       params: {
         firstName: this.state.firstName,
         lastName: this.state.lastName
@@ -97,12 +88,12 @@ class App extends Component {
           </div>
           <div className="col-md-6" style={{ height: '500px', width: '500px',marginTop:'10%'}}>
           <GoogleMapReact
-              bootstrapURLKeys={{ key: "" }}
+              bootstrapURLKeys={{ key: ENV.MY_API_KEY }}
               center={{
                 lat: this.state.latitude,
                 lng: this.state.longitude
               }}
-              defaultZoom={11}
+              defaultZoom={15}
             >
               <Marker
                 lat={this.state.latitude}
